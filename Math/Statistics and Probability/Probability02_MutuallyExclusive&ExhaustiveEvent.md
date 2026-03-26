@@ -214,3 +214,22 @@ This formula is extremely useful - if finding P(A) is hard, compute **1 − P(A'
 | General Addition Rule | Any two events | P(A ∪ B) = P(A) + P(B) − P(A ∩ B) |
 | Exhaustive | A ∪ B = S | P(A ∪ B) = 1 |
 | Complementary | ME + Exhaustive | P(A) + P(A') = 1 → P(A') = 1 − P(A) |
+
+---
+
+<div align="center">
+
+<sub>These notes were written and compiled by</sub>
+
+### **Sagar Bhadra**
+
+<sub>Connect with me on</sub>
+
+<br>
+
+[![GitHub](https://img.shields.io/badge/GitHub-SagarBhadra01-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SagarBhadra01)&nbsp;
+[![X (Twitter)](https://img.shields.io/badge/Twitter-SagarBhadra01-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/SagarBhadra01)&nbsp;
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-sagarbhadra01-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sagarbhadra01)&nbsp;
+[![Gmail](https://img.shields.io/badge/Gmail-sagarbhadra404@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sagarbhadra404@gmail.com)
+
+</div>

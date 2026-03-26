@@ -2,7 +2,7 @@
 
 # <span style="color:#0A2FA8">Measures of Central Tendency</span>
 
-<sub>Complete notes covering Mean, Median, and Mode — with formulas, comparisons, and examples</sub>
+<sub>Complete notes covering Mean, Median, and Mode - with formulas, comparisons, and examples</sub>
 
 </div>
 
@@ -13,9 +13,9 @@
 > **Definition:** A measure of central tendency is a single value that attempts to describe a dataset by identifying the central position within that dataset. It shows the "average" or most representative value of a set of numbers.
 
 The three main measures are:
-- **Mean** — the arithmetic average
-- **Median** — the middle value
-- **Mode** — the most frequently occurring value
+- **Mean** - the arithmetic average
+- **Median** - the middle value
+- **Mode** - the most frequently occurring value
 
 ---
 
@@ -70,11 +70,11 @@ Mean = 28 / 7 = 4
 </div>
 
 #### <span style="color:#5B8DB8">How it works:</span>
-- Each value `xᵢ` is **multiplied by its frequency** `fᵢ` — giving it a "weight" proportional to how often it occurs
+- Each value `xᵢ` is **multiplied by its frequency** `fᵢ` - giving it a "weight" proportional to how often it occurs
 - All these weighted values are summed and divided by the **total frequency N**
 - This is essentially the same as adding every individual data point, but in a compact form
 
-#### <span style="color:#5B8DB8">Example — Frequency Distribution Mean</span>
+#### <span style="color:#5B8DB8">Example - Frequency Distribution Mean</span>
 
 | Value (xᵢ) | Frequency (fᵢ) | xᵢ × fᵢ |
 |:---:|:---:|:---:|
@@ -118,7 +118,7 @@ x̄ = 26.67
 
 ### <span style="color:#2E86AB">3.2 Cases</span>
 
-#### <span style="color:#5B8DB8">Case 1 — n is Odd</span>
+#### <span style="color:#5B8DB8">Case 1 - n is Odd</span>
 
 - Median = **middle value** (single value)
 
@@ -129,7 +129,7 @@ Position = (7+1)/2 = 4th value
 Median = 5
 ```
 
-#### <span style="color:#5B8DB8">Case 2 — n is Even</span>
+#### <span style="color:#5B8DB8">Case 2 - n is Even</span>
 
 - Median = **average of the two middle values**
 
@@ -142,7 +142,7 @@ Median = (3 + 4) / 2 = 3.5
 
 ### <span style="color:#2E86AB">3.3 Key Properties</span>
 
-- **Not affected by outliers** — only depends on the middle value(s)
+- **Not affected by outliers** - only depends on the middle value(s)
 - Best measure for **skewed distributions**
 - Used for **ordinal data** (ranked data)
 - Median is the value at the **50th percentile**
@@ -177,7 +177,7 @@ Step 4: Note l, h, f, fc for the median class
 Step 5: Apply the formula: Median = l + (h/f) × (N/2 − fc)
 ```
 
-#### <span style="color:#5B8DB8">Example — Grouped Median</span>
+#### <span style="color:#5B8DB8">Example - Grouped Median</span>
 
 | Class Interval | Frequency (f) | Cumulative Frequency (CF) |
 |:---:|:---:|:---:|
@@ -212,7 +212,7 @@ Step 4: Apply formula:
 
 ### <span style="color:#2E86AB">3.5 Real-World Example from Notes</span>
 
-> Placement CTC for 10 students in a class: `{5, 5, 2, 4, 5, 5, 2}` — mean = 45/10 = 4.5 LPA
+> Placement CTC for 10 students in a class: `{5, 5, 2, 4, 5, 5, 2}` - mean = 45/10 = 4.5 LPA
 > Mean is **not the best** measure here if there are outliers. Median would be more representative.
 
 ---
@@ -248,7 +248,7 @@ Count of each value:
   5 → appears 1 time
   9 → appears 1 time
 
-Mode = 3  (appears 3 times — i.e., 3 times repeated)
+Mode = 3  (appears 3 times - i.e., 3 times repeated)
 ```
 
 > From notes example: `{2, 3, 5, 2, 9}` → mode = **3** (3 times repeated, making 3 the most frequent)
@@ -283,7 +283,7 @@ Step 2: Note L, f₁, f₀, f₂, and h
 Step 3: Apply the formula: Mode = L + [(f₁ − f₀) / (2f₁ − f₀ − f₂)] × h
 ```
 
-#### <span style="color:#5B8DB8">Example — Grouped Mode</span>
+#### <span style="color:#5B8DB8">Example - Grouped Mode</span>
 
 | Class Interval | Frequency (f) |
 |:---:|:---:|
@@ -320,7 +320,7 @@ Step 3: Apply formula:
 |:---|:---:|:---:|:---:|
 | Definition | Average of all values | Middle value (sorted) | Most frequent value |
 | Formula needed | Yes | Yes | No (just count) |
-| Affected by outliers | <span style="color:#C0392B">Yes — highly</span> | <span style="color:#27AE60">No</span> | <span style="color:#27AE60">No</span> |
+| Affected by outliers | <span style="color:#C0392B">Yes - highly</span> | <span style="color:#27AE60">No</span> | <span style="color:#27AE60">No</span> |
 | Works with categorical data | No | No | <span style="color:#27AE60">Yes</span> |
 | Unique value always? | Yes | Yes | Not always |
 | Best for | Symmetric data | Skewed data | Categorical / frequency data |
@@ -347,7 +347,7 @@ Step 3: Apply formula:
 
 ---
 
-## <span style="color:#1565C0">7. Quick Reference — All Formulas</span>
+## <span style="color:#1565C0">7. Quick Reference - All Formulas</span>
 
 ### <span style="color:#2E86AB">Mean</span>
 
@@ -383,7 +383,7 @@ Step 3: Apply formula:
 
 ---
 
-## <span style="color:#1565C0">8. Raw Data vs Grouped Data — Formula Comparison</span>
+## <span style="color:#1565C0">8. Raw Data vs Grouped Data - Formula Comparison</span>
 
 | Measure | Raw Data | Grouped / Frequency Data |
 |:---|:---|:---|
