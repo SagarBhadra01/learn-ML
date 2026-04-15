@@ -1,7 +1,8 @@
 <div align="center">
 
-# <span style="color:#0A2FA8">Types of Discrete Distributions</span>
+# <span style="color:#0A2FA8">Types of Discrete Random Variable Distributions</span>
 
+<sub>Complete notes covering all 8 types - formulas, derivations, properties, examples, and comparisons</sub>
 
 </div>
 
@@ -24,7 +25,7 @@
 
 | Quantity | Formula |
 |:---|:---|
-| Mean (Expected Value) | E[X] = Σ x · P(X = x) |
+| Expectation | E[X] = Σ x · P(X = x) |
 | Variance | Var(X) = E[X²] − (E[X])² |
 | Standard Deviation | σ = √Var(X) |
 | Moment Generating Function | M(t) = E[e^(tX)] |
@@ -53,11 +54,11 @@ where **n = b − a + 1** is the total number of values.
 
 | Property | Formula | Value (general) |
 |:---|:---:|:---:|
-| Mean | E[X] | (a + b) / 2 |
+| Expectation | E[X] | (a + b) / 2 |
 | Variance | Var(X) | (n² − 1) / 12 |
 | MGF | M(t) | (1/n) · Σ e^(tx) |
 
-### <span style="color:#2E86AB">1.4 Derivation of Mean & Variance</span>
+### <span style="color:#2E86AB">1.4 Derivation of Expectation & Variance</span>
 
 ```
 E[X] = Σ x · (1/n)  from x = a to b
@@ -80,13 +81,60 @@ Var(X) = E[X²] − (E[X])²  =  (n²−1)/12
 
 ### <span style="color:#2E86AB">1.6 Worked Example</span>
 
-**Problem:** A fair die is rolled. Find E[X] and Var(X).
+**Problem:** A fair die is rolled. Find P(X = x), E[X], E[X²], Var(X), and σ from first principles.
 
+**Step 1 - Identify Parameters**
 ```
-n = 6, a = 1, b = 6
-E[X]   = (1+6)/2 = 3.5
-Var(X) = (36−1)/12 = 35/12 ≈ 2.917
-σ      = √(35/12) ≈ 1.708
+X ∈ {1, 2, 3, 4, 5, 6}   →   a = 1, b = 6, n = b − a + 1 = 6
+```
+
+**Step 2 - PMF (verify validity)**
+```
+P(X = x) = 1/6  for each x ∈ {1,2,3,4,5,6}
+
+Sum check: 1/6 + 1/6 + 1/6 + 1/6 + 1/6 + 1/6 = 6/6 = 1  ✓
+```
+
+**Step 3 - Derive E[X] from definition**
+```
+E[X] = Σ x · P(X = x)
+     = 1·(1/6) + 2·(1/6) + 3·(1/6) + 4·(1/6) + 5·(1/6) + 6·(1/6)
+     = (1/6) · (1 + 2 + 3 + 4 + 5 + 6)
+     = (1/6) · 21
+     = 21/6
+     = 3.5
+```
+
+**Step 4 - Derive E[X²] from definition**
+```
+E[X²] = Σ x² · P(X = x)
+      = (1/6) · (1² + 2² + 3² + 4² + 5² + 6²)
+      = (1/6) · (1 + 4 + 9 + 16 + 25 + 36)
+      = (1/6) · 91
+      = 91/6
+      ≈ 15.1667
+```
+
+**Step 5 - Derive Var(X) using Var(X) = E[X²] − (E[X])²**
+```
+Var(X) = E[X²] − (E[X])²
+       = 91/6 − (3.5)²
+       = 91/6 − 12.25
+       = 91/6 − 49/4
+       = 182/12 − 147/12
+       = 35/12
+       ≈ 2.917
+```
+
+**Step 6 - Standard Deviation**
+```
+σ = √Var(X) = √(35/12) = √35 / √12 = 5.916 / 3.464 ≈ 1.708
+```
+
+**Step 7 - Verify using formula**
+```
+Formula: E[X] = (a+b)/2 = (1+6)/2 = 7/2 = 3.5  ✓
+Formula: Var(X) = (n²−1)/12 = (36−1)/12 = 35/12  ✓
 ```
 
 ---
@@ -115,7 +163,7 @@ Equivalently:
 
 | Property | Value |
 |:---|:---:|
-| Mean | p |
+| Expectation | p |
 | Variance | p(1−p) = pq |
 | MGF | q + p·e^t |
 | Skewness | (q − p) / √(pq) |
@@ -139,13 +187,59 @@ Equivalently:
 
 ### <span style="color:#2E86AB">2.6 Worked Example</span>
 
-**Problem:** A biased coin has P(Heads) = 0.7. Find E[X] and Var(X).
+**Problem:** A biased coin has P(Heads) = 0.7. Find P(X=0), P(X=1), E[X], E[X²], Var(X), and σ from first principles.
 
+**Step 1 - Identify Parameters**
 ```
-p = 0.7, q = 0.3
-E[X]   = 0.7
-Var(X) = 0.7 × 0.3 = 0.21
-σ      = √0.21 ≈ 0.458
+X = 1 (Heads = Success),  X = 0 (Tails = Failure)
+p = 0.7,   q = 1 − p = 0.3
+```
+
+**Step 2 - Compute PMF values**
+```
+P(X = 1) = p¹ · q^(1−1) = 0.7¹ · 0.3⁰ = 0.7 × 1    = 0.7
+P(X = 0) = p⁰ · q^(1−0) = 0.7⁰ · 0.3¹ = 1   × 0.3  = 0.3
+
+Sum check: 0.7 + 0.3 = 1  ✓
+```
+
+**Step 3 - Derive E[X] from definition**
+```
+E[X] = Σ x · P(X = x)
+     = 0 · P(X=0)  +  1 · P(X=1)
+     = 0 × 0.3     +  1 × 0.7
+     = 0 + 0.7
+     = 0.7
+```
+
+**Step 4 - Derive E[X²] from definition**
+```
+E[X²] = Σ x² · P(X = x)
+      = 0² · P(X=0)  +  1² · P(X=1)
+      = 0  × 0.3     +  1  × 0.7
+      = 0 + 0.7
+      = 0.7
+
+Note: For Bernoulli, E[X²] = E[X] = p, since x² = x for x ∈ {0,1}
+```
+
+**Step 5 - Derive Var(X) = E[X²] − (E[X])²**
+```
+Var(X) = E[X²] − (E[X])²
+       = 0.7 − (0.7)²
+       = 0.7 − 0.49
+       = 0.21
+```
+
+**Step 6 - Standard Deviation**
+```
+σ = √Var(X) = √0.21 ≈ 0.458
+```
+
+**Step 7 - Verify using formula**
+```
+Formula: E[X]   = p        = 0.7   ✓
+Formula: Var(X) = p·q      = 0.7 × 0.3 = 0.21  ✓
 ```
 
 ---
@@ -181,13 +275,13 @@ S - Same probability p for each trial
 
 | Property | Formula |
 |:---|:---:|
-| Mean | np |
+| Expectation | np |
 | Variance | npq = np(1−p) |
 | MGF | (q + pe^t)^n |
 | Skewness | (q − p) / √(npq) |
 | Kurtosis | (1 − 6pq) / (npq) |
 
-### <span style="color:#2E86AB">3.5 Derivation of Mean</span>
+### <span style="color:#2E86AB">3.5 Derivation of Expectation</span>
 
 ```
 X = X₁ + X₂ + ... + Xₙ  (sum of n Bernoulli RVs)
@@ -221,17 +315,82 @@ Var(X) = Var(X₁) + ... + Var(Xₙ)  (independence)
 
 ### <span style="color:#2E86AB">3.9 Worked Example</span>
 
-**Problem:** A coin is flipped 8 times. P(Heads) = 0.5. Find P(X = 3), E[X], Var(X).
+**Problem:** A coin is flipped 8 times. P(Heads) = 0.5. Find P(X = 3), E[X], E[X²], Var(X), and σ from first principles.
 
+**Step 1 - Identify Parameters**
 ```
-n=8, p=0.5, k=3
-P(X=3) = C(8,3) · (0.5)³ · (0.5)⁵
-        = 56 · 0.125 · 0.03125
-        = 56 × 0.003906 ≈ 0.2188
+n = 8,  p = 0.5,  q = 1 − 0.5 = 0.5
+X = number of Heads in 8 flips   →   X ~ Binomial(8, 0.5)
+```
 
-E[X]   = 8 × 0.5 = 4
-Var(X) = 8 × 0.5 × 0.5 = 2
-σ      = √2 ≈ 1.414
+**Step 2 - Compute P(X = 3) using PMF**
+```
+P(X = 3) = C(8, 3) · p³ · q^(8−3)
+
+Step 2a - Compute binomial coefficient C(8,3):
+  C(8,3) = 8! / (3! · 5!)
+          = (8 × 7 × 6) / (3 × 2 × 1)
+          = 336 / 6
+          = 56
+
+Step 2b - Compute p³:
+  (0.5)³ = 0.5 × 0.5 × 0.5 = 0.125
+
+Step 2c - Compute q⁵:
+  (0.5)⁵ = 0.5 × 0.5 × 0.5 × 0.5 × 0.5 = 0.03125
+
+Step 2d - Multiply all parts:
+  P(X=3) = 56 × 0.125 × 0.03125
+          = 56 × 0.00390625
+          = 0.21875
+          ≈ 0.2188
+```
+
+**Step 3 - Derive E[X] from first principles**
+```
+E[X] = Σ(k=0 to 8) k · C(8,k) · (0.5)^k · (0.5)^(8−k)
+
+Using the identity: k · C(n,k) = n · C(n−1, k−1)
+
+E[X] = Σ(k=1 to 8) k · C(8,k) · (0.5)⁸
+     = 8 · Σ(k=1 to 8) C(7, k−1) · (0.5)⁸
+     = 8 · (0.5)⁸ · Σ(j=0 to 7) C(7,j)   [let j = k−1]
+     = 8 · (0.5)⁸ · 2⁷                    [binomial theorem: Σ C(7,j) = 2⁷]
+     = 8 · (1/256) · 128
+     = 8 · 128/256
+     = 8 · 0.5
+     = 4
+```
+
+**Step 4 - Derive E[X²] and Var(X)**
+```
+Use: Var(X) = E[X(X−1)] + E[X] − (E[X])²
+
+E[X(X-1)] = Σ k(k-1) · C(8,k) · (0.5)⁸
+           = 8·7 · (0.5)⁸ · Σ C(6, k-2)  [using k(k-1)·C(n,k) = n(n-1)·C(n-2,k-2)]
+           = 56 · (0.5)⁸ · 2⁶
+           = 56 · (1/256) · 64
+           = 56 · 64/256
+           = 56 × 0.25
+           = 14
+
+E[X²]  = E[X(X−1)] + E[X] = 14 + 4 = 18
+
+Var(X) = E[X²] − (E[X])²
+       = 18 − 4²
+       = 18 − 16
+       = 2
+```
+
+**Step 5 - Standard Deviation**
+```
+σ = √Var(X) = √2 ≈ 1.414
+```
+
+**Step 6 - Verify using formulas**
+```
+E[X]   = np   = 8 × 0.5         = 4    ✓
+Var(X) = npq  = 8 × 0.5 × 0.5  = 2    ✓
 ```
 
 ---
@@ -265,13 +424,13 @@ where λ > 0 is the average rate (mean) of occurrences.
 
 | Property | Value |
 |:---|:---:|
-| Mean | λ |
+| Expectation | λ |
 | Variance | λ |
 | MGF | exp(λ(e^t − 1)) |
 | Skewness | 1/√λ |
 | Kurtosis | 1/λ |
 
-> **Key fact:** In Poisson distribution, **Mean = Variance = λ**. This is a unique and identifying property.
+> **Key fact:** In Poisson distribution, **Expectation = Variance = λ**. This is a unique and identifying property.
 
 ### <span style="color:#2E86AB">4.5 Derivation from Binomial (Poisson as Limit)</span>
 
@@ -306,16 +465,96 @@ Therefore:
 
 ### <span style="color:#2E86AB">4.8 Worked Example</span>
 
-**Problem:** On average, 3 cars arrive at a toll booth per minute. Find P(X = 0), P(X = 2), and P(X ≥ 1).
+**Problem:** On average, 3 cars arrive at a toll booth per minute. Find P(X = 0), P(X = 2), P(X ≥ 1), E[X], E[X²], Var(X), and σ from first principles.
 
+**Step 1 - Identify Parameters**
 ```
-λ = 3
+X = number of cars arriving per minute
+λ = 3   (average rate)
+X ~ Poisson(3)
+e^(−3) = 0.049787… ≈ 0.0498
+```
 
-P(X=0) = e^(−3) · 3⁰/0! = e^(−3) ≈ 0.0498
+**Step 2 - Compute P(X = 0)**
+```
+P(X = 0) = e^(−λ) · λ⁰ / 0!
+          = e^(−3) · 1 / 1
+          = e^(−3)
+          ≈ 0.0498
+```
 
-P(X=2) = e^(−3) · 3²/2! = 0.0498 × 9/2 ≈ 0.2240
+**Step 3 - Compute P(X = 2)**
+```
+P(X = 2) = e^(−λ) · λ² / 2!
+          = e^(−3) · 3² / 2
+          = e^(−3) · 9 / 2
+          = 0.0498 × 4.5
+          ≈ 0.2240
+```
 
-P(X≥1) = 1 − P(X=0) = 1 − 0.0498 ≈ 0.9502
+**Step 4 - Compute P(X ≥ 1) using complement**
+```
+P(X ≥ 1) = 1 − P(X = 0)
+          = 1 − e^(−3)
+          = 1 − 0.0498
+          ≈ 0.9502
+```
+
+**Step 5 - Derive E[X] from first principles**
+```
+E[X] = Σ(k=0 to ∞) k · [e^(−λ) · λ^k / k!]
+
+The k=0 term is 0, so:
+E[X] = Σ(k=1 to ∞) k · e^(−λ) · λ^k / k!
+     = Σ(k=1 to ∞) e^(−λ) · λ^k / (k−1)!    [cancel k with k!]
+
+Let j = k − 1:
+     = e^(−λ) · Σ(j=0 to ∞) λ^(j+1) / j!
+     = e^(−λ) · λ · Σ(j=0 to ∞) λ^j / j!
+     = e^(−λ) · λ · e^λ                       [Taylor series: Σ λ^j/j! = e^λ]
+     = λ
+
+For λ = 3:
+E[X] = 3
+```
+
+**Step 6 - Derive E[X²] and Var(X)**
+```
+Use the factorization trick: E[X²] = E[X(X−1)] + E[X]
+
+Derive E[X(X−1)]:
+E[X(X−1)] = Σ(k=0 to ∞) k(k−1) · e^(−λ) · λ^k / k!
+
+k=0 and k=1 terms are zero (k(k-1) = 0), so:
+         = Σ(k=2 to ∞) e^(−λ) · λ^k / (k−2)!    [cancel k(k-1) with k!]
+
+Let j = k − 2:
+         = e^(−λ) · Σ(j=0 to ∞) λ^(j+2) / j!
+         = e^(−λ) · λ² · Σ(j=0 to ∞) λ^j / j!
+         = e^(−λ) · λ² · e^λ
+         = λ²
+
+For λ = 3:
+E[X(X−1)] = 9
+
+Therefore:
+E[X²]  = E[X(X−1)] + E[X] = 9 + 3 = 12
+
+Var(X) = E[X²] − (E[X])²
+       = 12 − 3²
+       = 12 − 9
+       = 3
+```
+
+**Step 7 - Standard Deviation**
+```
+σ = √Var(X) = √3 ≈ 1.732
+```
+
+**Step 8 - Verify using formula**
+```
+Formula: E[X]   = λ = 3  ✓
+Formula: Var(X) = λ = 3  ✓   (Expectation = Variance - unique to Poisson)
 ```
 
 ---
@@ -351,7 +590,7 @@ Two equivalent forms exist:
 
 | Property | Formula |
 |:---|:---:|
-| Mean | 1/p |
+| Expectation | 1/p |
 | Variance | (1−p) / p² = q/p² |
 | MGF | pe^t / (1 − qe^t), t < −ln(q) |
 
@@ -382,15 +621,82 @@ P(X > m+n | X > m) = P(X > m+n) / P(X > m)
 
 ### <span style="color:#2E86AB">5.6 Worked Example</span>
 
-**Problem:** P(success) = 0.3 per trial. Find P(X = 4) and E[X].
+**Problem:** P(success) = 0.3 per trial. Find P(X = 4), P(X > 4), E[X], E[X²], Var(X), and σ from first principles.
 
+**Step 1 - Identify Parameters**
 ```
-p = 0.3, q = 0.7, k = 4
+p = 0.3,   q = 1 − p = 0.7
+X = number of trials until first success  →  X ~ Geometric(0.3)
+```
 
-P(X=4) = (0.7)³ × 0.3 = 0.343 × 0.3 = 0.1029
+**Step 2 - Compute P(X = 4)**
+```
+P(X = 4) = q^(k−1) · p
+          = (0.7)^(4−1) · 0.3
+          = (0.7)³ · 0.3
 
-E[X]   = 1/0.3 ≈ 3.33 trials expected
-Var(X) = 0.7/(0.3)² = 0.7/0.09 ≈ 7.78
+(0.7)³ = 0.7 × 0.7 × 0.7 = 0.49 × 0.7 = 0.343
+
+P(X = 4) = 0.343 × 0.3 = 0.1029
+```
+
+**Step 3 - Compute P(X > 4) using survival function**
+```
+P(X > k) = q^k   [all k trials are failures]
+
+P(X > 4) = (0.7)⁴ = 0.343 × 0.7 = 0.2401
+```
+
+**Step 4 - Derive E[X] from first principles using geometric series**
+```
+E[X] = Σ(k=1 to ∞) k · q^(k−1) · p
+     = p · Σ(k=1 to ∞) k · q^(k−1)
+
+Recall the identity: Σ(k=1 to ∞) k · x^(k−1) = 1/(1−x)²  for |x| < 1
+
+E[X] = p · 1/(1−q)²
+     = p · 1/p²              [since 1−q = p]
+     = 1/p
+
+For p = 0.3:
+E[X] = 1/0.3 = 10/3 ≈ 3.333
+```
+
+**Step 5 - Derive E[X²] and Var(X)**
+```
+Use: E[X²] = E[X(X+1)] − E[X]
+
+First find E[X(X+1)]:
+E[X(X+1)] = Σ(k=1 to ∞) k(k+1) · q^(k−1) · p
+
+Recall: Σ(k=1 to ∞) k(k+1) · x^(k−1) = 2/(1−x)³
+
+E[X(X+1)] = p · 2/(1−q)³
+           = p · 2/p³
+           = 2/p²
+
+For p = 0.3:
+E[X(X+1)] = 2/(0.3)² = 2/0.09 ≈ 22.222
+
+E[X²] = E[X(X+1)] − E[X]
+      = 22.222 − 3.333
+      = 18.889
+
+Var(X) = E[X²] − (E[X])²
+       = 18.889 − (3.333)²
+       = 18.889 − 11.111
+       = 7.778
+```
+
+**Step 6 - Standard Deviation**
+```
+σ = √Var(X) = √7.778 ≈ 2.789
+```
+
+**Step 7 - Verify using formula**
+```
+Formula: E[X]   = 1/p     = 1/0.3         ≈ 3.333  ✓
+Formula: Var(X) = q/p²    = 0.7/(0.3)²   = 0.7/0.09 ≈ 7.778  ✓
 ```
 
 ---
@@ -426,7 +732,7 @@ Key contrast: Unlike Binomial, trials are **not independent** (sampling without 
 
 | Property | Formula |
 |:---|:---:|
-| Mean | nK/N |
+| Expectation | nK/N |
 | Variance | n · (K/N) · (1−K/N) · (N−n)/(N−1) |
 | FPC factor | (N−n)/(N−1) - finite population correction |
 
@@ -450,17 +756,103 @@ Key contrast: Unlike Binomial, trials are **not independent** (sampling without 
 
 ### <span style="color:#2E86AB">6.6 Worked Example</span>
 
-**Problem:** A box has 12 items: 4 defective, 8 good. 3 are randomly selected without replacement. Find P(X = 2 defectives).
+**Problem:** A box has 12 items: 4 defective and 8 good. 3 are randomly selected without replacement. Find P(X = 0), P(X = 1), P(X = 2), E[X], Var(X), and σ - all fully derived.
 
+**Step 1 - Identify Parameters**
 ```
-N=12, K=4, n=3, k=2
+N = 12  (total population)
+K = 4   (defectives in population)
+N−K = 8 (good items in population)
+n = 3   (sample drawn without replacement)
+X = number of defectives in the sample
+```
 
+**Step 2 - Compute the denominator C(N, n) = C(12, 3)**
+```
+C(12, 3) = 12! / (3! · 9!)
+          = (12 × 11 × 10) / (3 × 2 × 1)
+          = 1320 / 6
+          = 220
+```
+
+**Step 3 - Compute P(X = 0)**
+```
+P(X=0) = C(4,0) · C(8,3) / C(12,3)
+
+C(4,0) = 1
+C(8,3) = (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56
+
+P(X=0) = 1 × 56 / 220 = 56/220 ≈ 0.2545
+```
+
+**Step 4 - Compute P(X = 1)**
+```
+P(X=1) = C(4,1) · C(8,2) / C(12,3)
+
+C(4,1) = 4
+C(8,2) = (8 × 7)/(2 × 1) = 56/2 = 28
+
+P(X=1) = 4 × 28 / 220 = 112/220 ≈ 0.5091
+```
+
+**Step 5 - Compute P(X = 2)**
+```
 P(X=2) = C(4,2) · C(8,1) / C(12,3)
-        = 6 × 8 / 220
-        = 48/220
-        ≈ 0.2182
 
-E[X]   = nK/N = 3×4/12 = 1
+C(4,2) = (4 × 3)/(2 × 1) = 12/2 = 6
+C(8,1) = 8
+
+P(X=2) = 6 × 8 / 220 = 48/220 ≈ 0.2182
+```
+
+**Step 6 - Verify PMF sums to 1**
+```
+P(X=3) = C(4,3)·C(8,0)/C(12,3) = 4×1/220 = 4/220 ≈ 0.0182
+
+Total = 56/220 + 112/220 + 48/220 + 4/220
+      = 220/220 = 1  ✓
+```
+
+**Step 7 - Derive E[X] from first principles**
+```
+E[X] = Σ k · P(X = k)
+     = 0·(56/220) + 1·(112/220) + 2·(48/220) + 3·(4/220)
+     = (0 + 112 + 96 + 12) / 220
+     = 220 / 220
+     = 1
+
+Using formula verification:
+E[X] = nK/N = 3 × 4/12 = 12/12 = 1  ✓
+```
+
+**Step 8 - Derive E[X²] and Var(X)**
+```
+E[X²] = Σ k² · P(X = k)
+      = 0²·(56/220) + 1²·(112/220) + 2²·(48/220) + 3²·(4/220)
+      = (0 + 112 + 192 + 36) / 220
+      = 340 / 220
+      ≈ 1.5455
+
+Var(X) = E[X²] − (E[X])²
+       = 340/220 − 1²
+       = 340/220 − 220/220
+       = 120/220
+       ≈ 0.5455
+```
+
+**Step 9 - Standard Deviation**
+```
+σ = √(120/220) = √(6/11) ≈ 0.7385
+```
+
+**Step 10 - Verify using formula**
+```
+Var(X) = n · (K/N) · (1 − K/N) · (N−n)/(N−1)
+       = 3 · (4/12) · (8/12) · (9/11)
+       = 3 · (1/3) · (2/3) · (9/11)
+       = 3 · 0.3333 · 0.6667 · 0.8182
+       = 3 × 0.18182
+       ≈ 0.5455  ✓
 ```
 
 ---
@@ -495,7 +887,7 @@ It is a **generalization of the Geometric distribution** (Geometric = NB with r 
 
 | Property | Formula |
 |:---|:---:|
-| Mean | rq/p = r(1−p)/p |
+| Expectation | rq/p = r(1−p)/p |
 | Variance | rq/p² |
 | MGF | [p/(1−qe^t)]^r, t < −ln(q) |
 
@@ -516,15 +908,92 @@ NB(r, p) as r→∞, p→1 with rq→λ →    Poisson(λ)
 
 ### <span style="color:#2E86AB">7.6 Worked Example</span>
 
-**Problem:** A basketball player makes each free throw with probability 0.7. Find the probability that the 3rd success occurs on the 5th attempt.
+**Problem:** A basketball player makes each free throw with probability 0.7. Find P(3rd success on 5th attempt), P(X = 6), E[X], E[X²], Var(X), and σ - all fully derived.
 
+**Step 1 - Identify Parameters**
 ```
-r=3, p=0.7, q=0.3, k=5 (Form 1)
+r = 3   (need 3 successes)
+p = 0.7 (probability of success per throw)
+q = 1 − p = 0.3
+X = trial on which the 3rd success occurs  →  X ~ NB(3, 0.7)   [Form 1]
+```
 
-P(X=5) = C(4,2) · (0.7)³ · (0.3)²
-        = 6 × 0.343 × 0.09
+**Step 2 - Compute P(X = 5) - 3rd success on 5th attempt**
+```
+P(X = 5) = C(k−1, r−1) · p^r · q^(k−r)
+          = C(5−1, 3−1) · (0.7)³ · (0.3)^(5−3)
+          = C(4, 2) · (0.7)³ · (0.3)²
+
+C(4,2) = (4 × 3)/(2 × 1) = 6
+
+(0.7)³ = 0.7 × 0.7 × 0.7 = 0.343
+(0.3)² = 0.3 × 0.3        = 0.09
+
+P(X=5) = 6 × 0.343 × 0.09
         = 6 × 0.030870
-        ≈ 0.1852
+        = 0.18522 ≈ 0.1852
+```
+
+**Step 3 - Compute P(X = 6) - 3rd success on 6th attempt**
+```
+P(X = 6) = C(5, 2) · (0.7)³ · (0.3)³
+
+C(5,2) = (5 × 4)/(2 × 1) = 10
+
+(0.3)³ = 0.3 × 0.3 × 0.3 = 0.027
+
+P(X=6) = 10 × 0.343 × 0.027
+        = 10 × 0.009261
+        = 0.09261 ≈ 0.0926
+```
+
+**Step 4 - Derive E[X] from first principles**
+```
+X is the sum of r independent Geometric(p) RVs:
+X = G₁ + G₂ + G₃   where each Gᵢ ~ Geometric(p)
+
+By linearity of expectation:
+E[X] = E[G₁] + E[G₂] + E[G₃]
+     = 1/p + 1/p + 1/p
+     = r/p
+
+For r=3, p=0.7:
+E[X] = 3/0.7 = 30/7 ≈ 4.286
+
+Interpretation: on average, 4.286 throws needed to get 3 successes.
+```
+
+**Step 5 - Derive Var(X) from first principles**
+```
+Since X = G₁ + G₂ + G₃ (independent Geometric RVs):
+
+Var(X) = Var(G₁) + Var(G₂) + Var(G₃)   [independence]
+       = q/p² + q/p² + q/p²
+       = r·q/p²
+
+For r=3, q=0.3, p=0.7:
+Var(X) = 3 × 0.3 / (0.7)²
+       = 0.9 / 0.49
+       ≈ 1.837
+```
+
+**Step 6 - Derive E[X²]**
+```
+E[X²] = Var(X) + (E[X])²
+      = 1.837 + (4.286)²
+      = 1.837 + 18.367
+      = 20.204
+```
+
+**Step 7 - Standard Deviation**
+```
+σ = √Var(X) = √1.837 ≈ 1.355
+```
+
+**Step 8 - Verify using formulas**
+```
+Formula: E[X]   = r/p       = 3/0.7        ≈ 4.286  ✓
+Formula: Var(X) = r·q/p²    = 3×0.3/0.49  ≈ 1.837  ✓
 ```
 
 ---
@@ -554,7 +1023,7 @@ It is a **multivariate** discrete distribution.
 
 | Property | Formula |
 |:---|:---:|
-| Marginal Mean | E[Xᵢ] = n · pᵢ |
+| Marginal Expectation | E[Xᵢ] = n · pᵢ |
 | Marginal Variance | Var(Xᵢ) = n · pᵢ · (1−pᵢ) |
 | Covariance | Cov(Xᵢ, Xⱼ) = −n · pᵢ · pⱼ  (i ≠ j) |
 
@@ -586,15 +1055,114 @@ This counts the number of ways to arrange n objects into k groups of sizes x₁,
 
 ### <span style="color:#2E86AB">8.7 Worked Example</span>
 
-**Problem:** A die is rolled 6 times. Find P(each face appears exactly once).
+**Problem:** A fair die is rolled 12 times. Let X₁ = count of 1s, X₂ = count of 2s, X₃ = count of {3,4,5,6}. Find P(X₁=2, X₂=3, X₃=7), E[Xᵢ], Var[Xᵢ], and Cov(X₁, X₂) - all fully derived.
 
+**Step 1 - Identify Parameters**
 ```
-n=6, k=6, x₁=x₂=…=x₆=1, p₁=p₂=…=p₆=1/6
+n = 12  (total rolls)
+3 categories:
+  Category 1: face = 1     →  p₁ = 1/6
+  Category 2: face = 2     →  p₂ = 1/6
+  Category 3: face ∈{3,4,5,6} → p₃ = 4/6 = 2/3
 
-P = [6! / (1!1!1!1!1!1!)] · (1/6)⁶
-  = 720 · (1/46656)
-  = 720/46656
-  ≈ 0.01543  (≈ 1.54%)
+Verify: p₁ + p₂ + p₃ = 1/6 + 1/6 + 4/6 = 6/6 = 1  ✓
+Counts: x₁=2, x₂=3, x₃=7
+Verify: x₁ + x₂ + x₃ = 2 + 3 + 7 = 12 = n  ✓
+```
+
+**Step 2 - Compute the Multinomial Coefficient**
+```
+n! / (x₁! · x₂! · x₃!) = 12! / (2! · 3! · 7!)
+
+12! = 479001600
+2!  = 2
+3!  = 6
+7!  = 5040
+
+= 479001600 / (2 × 6 × 5040)
+= 479001600 / 60480
+= 7920
+```
+
+**Step 3 - Compute the probability product**
+```
+p₁^x₁ · p₂^x₂ · p₃^x₃
+= (1/6)² · (1/6)³ · (2/3)⁷
+
+(1/6)² = 1/36
+(1/6)³ = 1/216
+(2/3)⁷ = 128/2187
+
+Product = (1/36) × (1/216) × (128/2187)
+        = 128 / (36 × 216 × 2187)
+        = 128 / 17006112
+        ≈ 0.000007527
+```
+
+**Step 4 - Compute P(X₁=2, X₂=3, X₃=7)**
+```
+P = Multinomial coefficient × probability product
+  = 7920 × (128 / 17006112)
+  = 1013760 / 17006112
+  ≈ 0.05962
+  ≈ 5.96%
+```
+
+**Step 5 - Derive E[Xᵢ] for each category**
+```
+Each Xᵢ ~ Binomial(n, pᵢ)  [marginal distribution]
+
+E[X₁] = n · p₁ = 12 × (1/6)   = 12/6   = 2
+E[X₂] = n · p₂ = 12 × (1/6)   = 12/6   = 2
+E[X₃] = n · p₃ = 12 × (2/3)   = 24/3   = 8
+
+Cross-check: E[X₁] + E[X₂] + E[X₃] = 2 + 2 + 8 = 12 = n  ✓
+```
+
+**Step 6 - Derive Var(Xᵢ) for each category**
+```
+Var(Xᵢ) = n · pᵢ · (1 − pᵢ)
+
+Var(X₁) = 12 × (1/6) × (5/6)
+         = 12 × 5/36
+         = 60/36
+         = 5/3 ≈ 1.667
+
+Var(X₂) = 12 × (1/6) × (5/6)
+         = 5/3 ≈ 1.667   [same as X₁ since p₁ = p₂]
+
+Var(X₃) = 12 × (2/3) × (1/3)
+         = 12 × 2/9
+         = 24/9
+         = 8/3 ≈ 2.667
+```
+
+**Step 7 - Derive Cov(X₁, X₂)**
+```
+Cov(Xᵢ, Xⱼ) = −n · pᵢ · pⱼ   [i ≠ j]
+
+Cov(X₁, X₂) = −12 × (1/6) × (1/6)
+             = −12 × 1/36
+             = −12/36
+             = −1/3
+             ≈ −0.333
+
+The negative covariance confirms: if more 1s appear,
+fewer 2s can appear (counts must sum to n = 12).
+```
+
+**Step 8 - Compute Standard Deviations**
+```
+σ(X₁) = √(5/3)  ≈ 1.291
+σ(X₂) = √(5/3)  ≈ 1.291
+σ(X₃) = √(8/3)  ≈ 1.633
+```
+
+**Step 9 - Verify using formulas**
+```
+Formula: E[Xᵢ]       = n·pᵢ              ✓  (all match above)
+Formula: Var(Xᵢ)     = n·pᵢ·(1−pᵢ)      ✓  (all match above)
+Formula: Cov(Xᵢ,Xⱼ) = −n·pᵢ·pⱼ         ✓  (−1/3 confirmed)
 ```
 
 ---
@@ -603,12 +1171,12 @@ P = [6! / (1!1!1!1!1!1!)] · (1/6)⁶
 
 ### <span style="color:#2E86AB">9.1 All 8 Distributions at a Glance</span>
 
-| Distribution | Parameter(s) | Support | Mean | Variance | Key Feature |
+| Distribution | Parameter(s) | Support | Expectation | Variance | Key Feature |
 |:---|:---:|:---:|:---:|:---:|:---|
 | Discrete Uniform | a, b | {a,…,b} | (a+b)/2 | (n²−1)/12 | All outcomes equally likely |
 | Bernoulli | p | {0, 1} | p | pq | Single binary trial |
 | Binomial | n, p | {0,…,n} | np | npq | n independent Bernoulli trials |
-| Poisson | λ | {0,1,2,…} | λ | λ | Mean = Variance; rare events |
+| Poisson | λ | {0,1,2,…} | λ | λ | Expectation = Variance; rare events |
 | Geometric | p | {1,2,3,…} | 1/p | q/p² | Memoryless; 1st success |
 | Hyper-Geometric | N, K, n | {0,…,min(n,K)} | nK/N | (see §6.3) | Without replacement |
 | Negative Binomial | r, p | {r,r+1,…} | r/p | rq/p² | r-th success |
@@ -696,6 +1264,7 @@ Binomial(n, p) ──► [N→∞] ◄── Hyper-Geometric(N, K, n)
 ### <span style="color:#D4A017">Multinomial:  P = [n!/(x₁!…xₖ!)] · p₁^x₁ · … · pₖ^xₖ</span>
 
 </div>
+
 
 ---
 
